@@ -1,8 +1,6 @@
 <template>
   <div>
-    <Post />
-    <Post />
-    <Post />
+    <Post :information="information[i]" v-for="(post, i) in 3" :key="i" />
   </div>
 </template>
 
@@ -14,6 +12,10 @@ export default {
 
   components: {
     Post: Post,
+  },
+
+  props: {
+    information: Array,
   },
 };
 </script>

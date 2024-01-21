@@ -2,19 +2,28 @@
   <div class="post">
     <div class="post-header">
       <div class="profile"></div>
-      <span class="profile-name">ChanKim</span>
+      <span class="profile-name">{{ information.name }}</span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body">
+      <img :src="information.postImage" alt="" />
+    </div>
     <div class="post-content">
       <p>43 Likes</p>
-      <p><strong>글쓴이아이디</strong> 임시내용</p>
-      <p class="date">May 15</p>
+      <p>
+        <strong>{{ information.name }}</strong> {{ information.content }}
+      </p>
+      <p class="date">{{ information.date }}</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'PostComp',
+  props: {
+    information: Array,
+  },
+};
 </script>
 
 <style>
@@ -41,11 +50,18 @@ export default {};
   padding: 10px;
 }
 .post-body {
-  background-image: url('https://picsum.photos/600?random=0');
+  /* background-image: url('https://picsum.photos/600?random=0'); */
   height: 450px;
   background-position: center;
   background-size: cover;
 }
+
+.post-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .post-content {
   padding-left: 15px;
   padding-right: 15px;
