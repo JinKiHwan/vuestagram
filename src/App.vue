@@ -42,13 +42,11 @@ export default {
 
   methods: {
     more() {
-      let qwer = this.count++;
-      console.log(qwer);
-
       axios
-        .get(`https://codingapple1.github.io/vue/more${qwer}.json`)
+        .get(`https://codingapple1.github.io/vue/more${this.count}.json`)
         .then((result) => {
           this.information.push(result.data);
+          this.count++;
         })
         .catch((error) => {
           alert('잘못된 접근입니다.', error);
