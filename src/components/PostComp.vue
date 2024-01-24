@@ -1,12 +1,14 @@
 <template>
   <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
+      <div
+        class="profile"
+        :style="{ backgroundImage: `url(${information.userImage})` }"></div>
       <span class="profile-name">{{ information.name }}</span>
     </div>
-    <div class="post-body">
-      <img :src="information.postImage" alt="" />
-    </div>
+    <div
+      class="post-body"
+      :style="{ backgroundImage: `url(${information.postImage})` }"></div>
     <div class="post-content">
       <p>43 Likes</p>
       <p>
@@ -50,7 +52,7 @@ export default {
   padding: 10px;
 }
 .post-body {
-  /* background-image: url('https://picsum.photos/600?random=0'); */
+  background-image: url('https://picsum.photos/600?random=0');
   height: 450px;
   background-position: center;
   background-size: cover;
