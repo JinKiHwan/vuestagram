@@ -3,14 +3,19 @@
     <div class="post-header">
       <div
         class="profile"
-        :style="{ backgroundImage: `url(${information.userImage})` }"></div>
+        :style="{
+          backgroundImage: `url(${information.userImage})`,
+        }"></div>
       <span class="profile-name">{{ information.name }}</span>
     </div>
     <div
       class="post-body"
-      :style="{ backgroundImage: `url(${information.postImage})` }"></div>
+      :style="{
+        backgroundImage: `url(${information.postImage})`,
+        filter: `${filter}`,
+      }"></div>
     <div class="post-content">
-      <p>43 Likes</p>
+      <p>{{ information.likes }} Likes</p>
       <p>
         <strong>{{ information.name }}</strong> {{ information.content }}
       </p>
