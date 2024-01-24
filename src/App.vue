@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       information: information,
+      count: 0,
     };
   },
 
@@ -41,17 +42,16 @@ export default {
 
   methods: {
     more() {
-      axios
-        .post('URL', { name: 'kim' })
-        .then()
-        .catch((err) => {
-          err;
-        });
+      let qwer = this.count++;
+      console.log(qwer);
 
       axios
-        .get('https://codingapple1.github.io/vue/more0.json')
+        .get(`https://codingapple1.github.io/vue/more${qwer}.json`)
         .then((result) => {
           this.information.push(result.data);
+        })
+        .catch((error) => {
+          alert('잘못된 접근입니다.', error);
         });
     },
   },
