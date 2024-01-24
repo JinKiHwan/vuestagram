@@ -9,13 +9,19 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :information="information" />
+  <Container :information="information" :step="step" :urlImage="urlImage" />
 
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input
+        type="file"
+        id="file"
+        class="inputfile"
+        @change="upload"
+        multiple
+        accept="image/*" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -33,6 +39,8 @@ export default {
     return {
       information: information,
       count: 0,
+      step: 0,
+      urlImage: '',
     };
   },
 
@@ -51,6 +59,18 @@ export default {
         .catch((error) => {
           alert('잘못된 접근입니다.', error);
         });
+    },
+
+    upload(e) {
+      let a = e.target.files;
+      console.log(a[0]);
+
+      let url = URL.createObjectURL(a[0]);
+
+      this.step = 1;
+      this.urlImage = url;
+
+      console.log(this.urlImage, '1');
     },
   },
 };
