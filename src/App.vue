@@ -97,6 +97,7 @@ export default {
       };
       this.information.unshift(내게시물);
       this.step = 0;
+      this.filterClass = '';
     },
   },
 };
