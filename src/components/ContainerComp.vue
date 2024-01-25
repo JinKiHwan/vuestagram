@@ -14,6 +14,7 @@
         :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="filters">
         <FilterBox
+          :class="`${filter[i]}`"
           :urlImage="urlImage"
           v-for="(작명, i) in filter"
           :key="i"></FilterBox>
