@@ -1,7 +1,9 @@
 <template>
   <div
     :class="selectFilter + ' filter-item'"
-    :style="`background-image:url(${urlImage})`"></div>
+    :style="`background-image:url(${urlImage})`">
+    <button @click="fire()">버튼</button>
+  </div>
 </template>
 
 <script>
@@ -11,6 +13,12 @@ export default {
   props: {
     urlImage: String,
     selectFilter: String,
+  },
+
+  methods: {
+    fire() {
+      this.emitter.emit('이벤트명작명', this.selectFilter);
+    },
   },
 };
 </script>

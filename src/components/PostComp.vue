@@ -9,7 +9,7 @@
       <span class="profile-name">{{ information.name }}</span>
     </div>
     <div
-      class="post-body"
+      :class="information.filter + ` post-body`"
       :style="{
         backgroundImage: `url(${information.postImage})`,
         filter: `${filter}`,
@@ -29,6 +29,7 @@ export default {
   name: 'PostComp',
   props: {
     information: Array,
+    filterClass: String,
   },
 };
 </script>

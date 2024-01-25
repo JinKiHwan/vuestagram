@@ -10,13 +10,24 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :information="information" :step="step" :urlImage="urlImage" @write="postText = $event" />
+  <Container
+    :information="information"
+    :step="step"
+    :urlImage="urlImage"
+    :filterClass="filterClass"
+    @write="postText = $event" />
 
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" @change="upload" multiple accept="image/*" />
+      <input
+        type="file"
+        id="file"
+        class="inputfile"
+        @change="upload"
+        multiple
+        accept="image/*" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -37,7 +48,14 @@ export default {
       step: 0,
       urlImage: '',
       postText: '',
+      filterClass: '',
     };
+  },
+
+  mounted() {
+    this.emitter.on('이벤트명작명', (filterName) => {
+      this.filterClass = filterName;
+    });
   },
 
   components: {
@@ -75,7 +93,7 @@ export default {
         date: 'Apr 4',
         liked: false,
         content: this.postText,
-        filter: 'lofi',
+        filter: this.filterClass,
       };
       this.information.unshift(내게시물);
       this.step = 0;

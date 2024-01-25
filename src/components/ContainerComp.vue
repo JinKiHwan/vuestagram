@@ -2,6 +2,7 @@
   <div>
     <div v-if="step == 0">
       <Post
+        :filterClass="filterClass"
         :information="information[i]"
         v-for="(post, i) in information"
         :key="i" />
@@ -10,7 +11,7 @@
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
       <div
-        class="upload-image"
+        :class="filterClass + ` upload-image`"
         :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="filters">
         <FilterBox
@@ -24,7 +25,7 @@
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
       <div
-        class="upload-image"
+        :class="filterClass + ` upload-image`"
         :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="write">
         <textarea
@@ -61,6 +62,7 @@ export default {
     step: Number,
     urlImage: String,
     postText: String,
+    filterClass: String,
   },
 };
 </script>
