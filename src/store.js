@@ -6,6 +6,7 @@ const store = createStore({
       name: 'kim',
       age: 10,
       likes: 30,
+      likesCount: 0,
     };
   },
 
@@ -18,6 +19,16 @@ const store = createStore({
         state.age += data;
       } else {
         state.age;
+      }
+    },
+
+    좋아요(state) {
+      if (state.likesCount == 0) {
+        state.likes += 1;
+        state.likesCount += 1;
+      } else if (state.likesCount == 1) {
+        state.likes -= 1;
+        state.likesCount -= 1;
       }
     },
   },
