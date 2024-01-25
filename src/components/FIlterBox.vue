@@ -1,5 +1,7 @@
 <template>
-  <div class="filter-item" :style="`background-image:url(${urlImage})`"></div>
+  <div
+    :class="selectFilter + ' filter-item'"
+    :style="`background-image:url(${urlImage})`"></div>
 </template>
 
 <script>
@@ -8,6 +10,7 @@ export default {
 
   props: {
     urlImage: String,
+    selectFilter: String,
   },
 };
 </script>

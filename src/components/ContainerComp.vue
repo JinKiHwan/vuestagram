@@ -14,10 +14,10 @@
         :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="filters">
         <FilterBox
-          :class="`${filter[i]}`"
+          :selectFilter="selectFilter"
           :urlImage="urlImage"
-          v-for="(작명, i) in filter"
-          :key="i"></FilterBox>
+          v-for="selectFilter in filters"
+          :key="selectFilter"></FilterBox>
       </div>
     </div>
 
@@ -40,14 +40,14 @@
 <script>
 import Post from './PostComp';
 import FilterBox from './FIlterBox.vue';
-import filter from '../assets/filter';
+import filters from '../assets/filter';
 
 export default {
   name: 'ContainerComp',
 
   data() {
     return {
-      filter: filter,
+      filters: filters,
     };
   },
 
