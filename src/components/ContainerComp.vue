@@ -1,26 +1,36 @@
 <template>
   <div>
     <div v-if="step == 0">
-      <Post :information="information[i]" v-for="(post, i) in information" :key="i" />
+      <Post
+        :information="information[i]"
+        v-for="(post, i) in information"
+        :key="i" />
     </div>
 
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image" :style="{ backgroundImage: `url(${urlImage})` }"></div>
+      <div
+        class="upload-image"
+        :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          :urlImage="urlImage"
+          v-for="(작명, i) in filter"
+          :key="i"></FilterBox>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
-      <div class="upload-image" :style="{ backgroundImage: `url(${urlImage})` }"></div>
+      <div
+        class="upload-image"
+        :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="write">
-        <textarea class="write-box" @input="$emit('write', $event.target.value)">write!</textarea>
+        <textarea
+          class="write-box"
+          @input="$emit('write', $event.target.value)">
+          write!
+        </textarea>
       </div>
     </div>
   </div>
@@ -28,12 +38,21 @@
 
 <script>
 import Post from './PostComp';
+import FilterBox from './FIlterBox.vue';
+import filter from '../assets/filter';
 
 export default {
   name: 'ContainerComp',
 
+  data() {
+    return {
+      filter: filter,
+    };
+  },
+
   components: {
     Post: Post,
+    FilterBox: FilterBox,
   },
 
   props: {
