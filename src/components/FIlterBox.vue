@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="selectFilter + ' filter-item'"
-    :style="`background-image:url(${urlImage})`">
-    <button @click="fire()">버튼</button>
-  </div>
+  <div :class="selectFilter + ' filter-item'" :style="`background-image:url(${urlImage})`" @click="fire()"></div>
 </template>
 
 <script>

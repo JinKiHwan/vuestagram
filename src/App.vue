@@ -10,24 +10,16 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container
-    :information="information"
-    :step="step"
-    :urlImage="urlImage"
-    :filterClass="filterClass"
-    @write="postText = $event" />
+  <h4>안녕 {{ $store.state.name }}</h4>
+  <button @click="$store.state.name = '박'">버튼</button>
+
+  <Container :information="information" :step="step" :urlImage="urlImage" :filterClass="filterClass" @write="postText = $event" />
 
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input
-        type="file"
-        id="file"
-        class="inputfile"
-        @change="upload"
-        multiple
-        accept="image/*" />
+      <input type="file" id="file" class="inputfile" @change="upload" multiple accept="image/*" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>

@@ -1,38 +1,22 @@
 <template>
   <div>
     <div v-if="step == 0">
-      <Post
-        :filterClass="filterClass"
-        :information="information[i]"
-        v-for="(post, i) in information"
-        :key="i" />
+      <Post :filterClass="filterClass" :information="information[i]" v-for="(post, i) in information" :key="i" />
     </div>
 
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div
-        :class="filterClass + ` upload-image`"
-        :style="{ backgroundImage: `url(${urlImage})` }"></div>
+      <div :class="filterClass + ` upload-image`" :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="filters">
-        <FilterBox
-          :selectFilter="selectFilter"
-          :urlImage="urlImage"
-          v-for="selectFilter in filters"
-          :key="selectFilter"></FilterBox>
+        <FilterBox :selectFilter="selectFilter" :urlImage="urlImage" v-for="selectFilter in filters" :key="selectFilter"></FilterBox>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
-      <div
-        :class="filterClass + ` upload-image`"
-        :style="{ backgroundImage: `url(${urlImage})` }"></div>
+      <div :class="filterClass + ` upload-image`" :style="{ backgroundImage: `url(${urlImage})` }"></div>
       <div class="write">
-        <textarea
-          class="write-box"
-          @input="$emit('write', $event.target.value)">
-          write!
-        </textarea>
+        <textarea class="write-box" @input="$emit('write', $event.target.value)">write!</textarea>
       </div>
     </div>
   </div>
