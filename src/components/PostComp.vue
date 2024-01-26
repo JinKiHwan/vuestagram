@@ -18,7 +18,7 @@
       @click="$store.commit('좋아요')"
     ></div>
     <div class="post-content">
-      <p>{{ $store.state.likes }} Likes</p>
+      <p>{{ likesData }} Likes</p>
       <p>
         <strong>{{ information.name }}</strong> {{ information.content }}
       </p>
@@ -33,6 +33,7 @@ export default {
   props: {
     information: Array,
     filterClass: String,
+    likesData: Number,
   },
 };
 </script>

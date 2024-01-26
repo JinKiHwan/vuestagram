@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="step == 0">
-      <Post :filterClass="filterClass" :information="information[i]" v-for="(post, i) in information" :key="i" />
+      <Post :filterClass="filterClass" :information="information[i]" v-for="(post, i) in information" :key="i" :likesData="$store.state.likesData[i].likes" />
     </div>
 
     <!-- 필터선택페이지 -->
