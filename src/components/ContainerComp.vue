@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="step == 0">
+      <!-- 게시글/포스트 -->
       <Post :filterClass="filterClass" :information="information[i]" v-for="(post, i) in information" :key="i" />
+      <!-- 게시글/포스트 -->
     </div>
 
     <!-- 필터선택페이지 -->

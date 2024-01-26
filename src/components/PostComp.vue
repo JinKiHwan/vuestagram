@@ -17,7 +17,7 @@
       }"
     ></div>
     <div class="post-content">
-      <p>Likes</p>
+      <p>{{ information.likes }} Likes</p>
       <p>
         <strong>{{ information.name }}</strong> {{ information.content }}
       </p>
