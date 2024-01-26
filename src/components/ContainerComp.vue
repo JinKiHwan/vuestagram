@@ -2,7 +2,7 @@
   <div>
     <div v-if="step == 0">
       <!-- 게시글/포스트 -->
-      <Post :filterClass="filterClass" :information="information[i]" v-for="(post, i) in information" :key="i" />
+      <Post :filterClass="filterClass" :information="information[i]" :i="i" v-for="(post, i) in information" :key="i" />
       <!-- 게시글/포스트 -->
     </div>
 

@@ -15,6 +15,7 @@
         backgroundImage: `url(${information.postImage})`,
         filter: `${filter}`,
       }"
+      @click="$store.commit('너무너무좋아요', i)"
     ></div>
     <div class="post-content">
       <p>{{ information.likes }} Likes</p>
@@ -30,9 +31,10 @@
 export default {
   name: 'PostComp',
   props: {
-    information: Array,
+    information: Object,
     filterClass: String,
     likesData: Number,
+    i: Number,
   },
 };
 </script>

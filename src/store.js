@@ -13,7 +13,7 @@ const store = createStore({
       likesCount: 0,
       //likesData,
       more: {},
-      count: 0,
+      likeCount: false,
       information: information,
     };
   },
@@ -33,6 +33,16 @@ const store = createStore({
         state.age += data;
       } else {
         state.age;
+      }
+    },
+
+    너무너무좋아요(state, i) {
+      if (state.likeCount == false) {
+        state.information[i].likes += 1;
+        state.likeCount = true;
+      } else {
+        state.information[i].likes -= 1;
+        state.likeCount = false;
       }
     },
 
@@ -58,7 +68,7 @@ const store = createStore({
         .get(`https://codingapple1.github.io/vue/more${context.state.count}.json`)
         .then((result) => {
           context.commit('setMore', result.data);
-          console.log(context.state.information);
+          console.log(context.state.information[0].likes);
         })
         .catch((error) => {
           alert('잘못된 접근입니다.', error);
