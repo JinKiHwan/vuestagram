@@ -16,12 +16,9 @@
   <h4>나이: {{ $store.state.age }}</h4>
   <button @click="$store.commit('나이증가', 10)">버튼</button>
 
-  <p>{{ $store.state.more }}</p>
-  <button @click="$store.dispatch('getData')">더보기 버튼</button>
+  <Container :information="$store.state.information" :step="step" :urlImage="urlImage" :filterClass="filterClass" @write="postText = $event" />
 
-  <Container :information="information" :step="step" :urlImage="urlImage" :filterClass="filterClass" @write="postText = $event" />
-
-  <button @click="more">더보기</button>
+  <button @click="$store.dispatch('getData')">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -33,16 +30,12 @@
 
 <script>
 import Container from './components/ContainerComp.vue';
-import information from './assets/data';
-import axios from 'axios';
 
 export default {
   name: 'App',
 
   data() {
     return {
-      information: information,
-      count: 0,
       step: 0,
       urlImage: '',
       postText: '',
@@ -61,18 +54,6 @@ export default {
   },
 
   methods: {
-    more() {
-      axios
-        .get(`https://codingapple1.github.io/vue/more${this.count}.json`)
-        .then((result) => {
-          this.information.push(result.data);
-          this.count++;
-        })
-        .catch((error) => {
-          alert('잘못된 접근입니다.', error);
-        });
-    },
-
     upload(e) {
       let a = e.target.files;
 

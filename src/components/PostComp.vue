@@ -15,10 +15,9 @@
         backgroundImage: `url(${information.postImage})`,
         filter: `${filter}`,
       }"
-      @click="$store.commit('좋아요')"
     ></div>
     <div class="post-content">
-      <p>{{ likesData }} Likes</p>
+      <p>Likes</p>
       <p>
         <strong>{{ information.name }}</strong> {{ information.content }}
       </p>
