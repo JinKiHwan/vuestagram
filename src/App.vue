@@ -4,8 +4,8 @@
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li @click="step++" v-if="step == 1">Next</li>
-      <li @click="publish" v-if="step == 2">발행</li>
+      <li @click="$store.commit('next')" v-if="$store.state.step == 1">Next</li>
+      <li @click="$store.commit('publish')" v-if="$store.state.step == 2">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -16,7 +16,7 @@
   <h4>나이: {{ $store.state.age }}</h4>
   <button @click="$store.commit('나이증가', 10)">버튼</button>
 
-  <Container :information="$store.state.information" :step="step" :urlImage="urlImage" :filterClass="filterClass" @write="postText = $event" />
+  <Container :information="$store.state.information" :urlImage="urlImage" :filterClass="filterClass" @write="postText = $event" />
 
   <button @click="$store.dispatch('getData')">더보기</button>
 
@@ -36,10 +36,7 @@ export default {
 
   data() {
     return {
-      step: 0,
-      urlImage: '',
-      postText: '',
-      filterClass: '',
+      //step: 0,
     };
   },
 
@@ -54,29 +51,8 @@ export default {
   },
 
   methods: {
-    upload(e) {
-      let a = e.target.files;
-
-      let url = URL.createObjectURL(a[0]);
-
-      this.step = 1;
-      this.urlImage = url;
-    },
-
-    publish() {
-      var 내게시물 = {
-        name: 'Minny',
-        userImage: 'https://picsum.photos/100?random=5',
-        postImage: this.urlImage,
-        likes: 49,
-        date: 'Apr 4',
-        liked: false,
-        content: this.postText,
-        filter: this.filterClass,
-      };
-      this.information.unshift(내게시물);
-      this.step = 0;
-      this.filterClass = '';
+    upload(event) {
+      this.$store.commit('upload', event);
     },
   },
 };

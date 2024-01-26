@@ -1,5 +1,4 @@
 import { createStore } from 'vuex';
-//import dataJs from './assets/data';
 import axios from 'axios';
 import information from './assets/data';
 
@@ -14,7 +13,13 @@ const store = createStore({
       //likesData,
       more: {},
       likeCount: false,
+      count: 0,
       information: information,
+
+      urlImage: '',
+      postText: '',
+      filterClass: '',
+      step: 0,
     };
   },
 
@@ -46,23 +51,42 @@ const store = createStore({
       }
     },
 
-    // 좋아요(state) {
-    //   if (state.likesCount == 0) {
-    //     state.likesData.forEach((item) => {
-    //       item.likes += 1;
-    //     });
-    //     state.likesCount += 1;
-    //   } else if (state.likesCount == 1) {
-    //     state.likesData.forEach((item) => {
-    //       item.likes -= 1;
-    //     });
-    //     state.likesCount -= 1;
-    //   }
-    // },
+    publish(state) {
+      var 내게시물 = {
+        name: 'Minny',
+        userImage: 'https://picsum.photos/100?random=5',
+        postImage: state.urlImage,
+        likes: 49,
+        date: 'Apr 4',
+        liked: false,
+        content: state.postText,
+        filter: state.filterClass,
+      };
+      console.log(내게시물);
+      state.information.unshift(내게시물);
+      state.step = 0;
+      state.filterClass = '';
+    },
+
+    next(state) {
+      state.step = 2;
+    },
+
+    upload(state, event) {
+      let files = event.target.files;
+
+      if (files.length > 0) {
+        let url = URL.createObjectURL(files[0]);
+
+        state.step = 1;
+        state.urlImage = url;
+
+        console.log(state.urlImage);
+      }
+    },
   },
 
   actions: {
-    //데이터 가져오기
     getData(context) {
       axios
         .get(`https://codingapple1.github.io/vue/more${context.state.count}.json`)
