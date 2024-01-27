@@ -21,6 +21,10 @@
         <textarea class="write-box" @input="$store.commit('write', $event.target.value)">write!</textarea>
       </div>
     </div>
+
+    <div v-if="$store.state.step == 3">
+      <MypageComp></MypageComp>
+    </div>
   </div>
 </template>
 
@@ -28,6 +32,7 @@
 import Post from './PostComp';
 import FilterBox from './FIlterBox.vue';
 import filters from '../assets/filter';
+import MypageComp from '../components/MypageComp';
 
 export default {
   name: 'ContainerComp',
@@ -41,6 +46,7 @@ export default {
   components: {
     Post: Post,
     FilterBox: FilterBox,
+    MypageComp: MypageComp,
   },
 
   props: {

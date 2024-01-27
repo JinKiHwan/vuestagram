@@ -20,7 +20,7 @@ const store = createStore({
       urlImage: '',
       postText: '123',
       filterClass: '',
-      step: 0,
+      step: 3,
       filter: filter,
 
       selectFilter: '',
