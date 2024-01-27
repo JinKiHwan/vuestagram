@@ -23,7 +23,7 @@
     </div>
 
     <div v-if="$store.state.step == 3">
-      <MypageComp></MypageComp>
+      <MypageComp :one="1"></MypageComp>
     </div>
   </div>
 </template>
