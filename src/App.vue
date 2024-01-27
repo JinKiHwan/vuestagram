@@ -10,11 +10,10 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <h4>안녕 {{ $store.state.name }}</h4>
-  <button @click="$store.commit('이름변경')">버튼</button>
+  <p>{{ 작명 }} {{ age }} {{ postText }}</p>
 
-  <h4>나이: {{ $store.state.age }}</h4>
-  <button @click="$store.commit('나이증가', 10)">버튼</button>
+  <p>{{ $store.state.age }}</p>
+  <button @click="나이증가(10)">버튼</button>
 
   <Container :information="$store.state.information" @write="postText = $event" />
 
@@ -30,6 +29,7 @@
 
 <script>
 import Container from './components/ContainerComp.vue';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'App',
@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       //step: 0,
+      카운터: 0,
     };
   },
 
@@ -46,9 +47,20 @@ export default {
     Container: Container,
   },
 
+  computed: {
+    ...mapState(['name', 'age', 'likes', 'postText']),
+    ...mapState({ 작명: 'name' }),
+  },
+
   methods: {
+    ...mapMutations(['setMore', '좋아요', '나이증가']),
+
     upload(event) {
       this.$store.commit('upload', event);
+    },
+
+    now() {
+      return new Date();
     },
   },
 };
