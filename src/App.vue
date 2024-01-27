@@ -16,7 +16,7 @@
   <h4>나이: {{ $store.state.age }}</h4>
   <button @click="$store.commit('나이증가', 10)">버튼</button>
 
-  <Container :information="$store.state.information" :urlImage="urlImage" :filterClass="filterClass" @write="postText = $event" />
+  <Container :information="$store.state.information" @write="postText = $event" />
 
   <button @click="$store.dispatch('getData')">더보기</button>
 
@@ -40,11 +40,7 @@ export default {
     };
   },
 
-  mounted() {
-    this.emitter.on('이벤트명작명', (filterName) => {
-      this.filterClass = filterName;
-    });
-  },
+  mounted() {},
 
   components: {
     Container: Container,

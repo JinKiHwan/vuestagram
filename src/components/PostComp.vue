@@ -10,10 +10,9 @@
       <span class="profile-name">{{ information.name }}</span>
     </div>
     <div
-      :class="information.filter + ` post-body`"
+      :class="$store.state.information[i].filter + ` post-body`"
       :style="{
         backgroundImage: `url(${information.postImage})`,
-        filter: `${filter}`,
       }"
       @click="$store.commit('너무너무좋아요', i)"
     ></div>

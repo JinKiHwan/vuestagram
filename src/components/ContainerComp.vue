@@ -2,23 +2,23 @@
   <div>
     <div v-if="$store.state.step == 0">
       <!-- 게시글/포스트 -->
-      <Post :filterClass="filterClass" :information="information[i]" :i="i" v-for="(post, i) in information" :key="i" />
+      <Post :information="information[i]" :i="i" v-for="(post, i) in information" :key="i" />
       <!-- 게시글/포스트 -->
     </div>
 
     <!-- 필터선택페이지 -->
     <div v-if="$store.state.step == 1">
-      <div :class="filterClass + ` upload-image`" :style="{ backgroundImage: `url(` + $store.state.urlImage + `)` }"></div>
+      <div :class="$store.state.selectFilter + ` upload-image`" :style="{ backgroundImage: `url(` + $store.state.urlImage + `)` }"></div>
       <div class="filters">
-        <FilterBox :selectFilter="selectFilter" v-for="selectFilter in filters" :key="selectFilter"></FilterBox>
+        <FilterBox v-for="(selectFilter, i) in $store.state.filter" :key="selectFilter" :i="i"></FilterBox>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="$store.state.step == 2">
-      <div :class="filterClass + ` upload-image`" :style="{ backgroundImage: `url(` + $store.state.urlImage + `)` }"></div>
+      <div :class="$store.state.selectFilter + ` upload-image`" :style="{ backgroundImage: `url(` + $store.state.urlImage + `)` }"></div>
       <div class="write">
-        <textarea class="write-box" @input="$emit('write', $event.target.value)">write!</textarea>
+        <textarea class="write-box" @input="$store.commit('write', $event.target.value)">write!</textarea>
       </div>
     </div>
   </div>
@@ -48,7 +48,6 @@ export default {
     //step: Number,
     urlImage: String,
     postText: String,
-    filterClass: String,
   },
 };
 </script>

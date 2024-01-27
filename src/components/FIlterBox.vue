@@ -1,5 +1,5 @@
 <template>
-  <div :class="selectFilter + ' filter-item'" :style="{ backgroundImage: `url(` + $store.state.urlImage + `)` }" @click="fire()"></div>
+  <div :class="$store.state.filter[i] + ' filter-item'" :style="{ backgroundImage: `url(` + $store.state.urlImage + `)` }" @click="fire"></div>
 </template>
 
 <script>
@@ -9,11 +9,13 @@ export default {
   props: {
     urlImage: String,
     selectFilter: String,
+    i: Number,
   },
 
   methods: {
     fire() {
-      this.emitter.emit('이벤트명작명', this.selectFilter);
+      //this.emitter.emit('이벤트명작명', this.selectFilter);
+      this.$store.commit('filterPicker', this.$store.state.filter[this.i]);
     },
   },
 };

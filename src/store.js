@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
 import information from './assets/data';
+import filter from './assets/filter';
 
 const store = createStore({
   state() {
@@ -17,13 +18,23 @@ const store = createStore({
       information: information,
 
       urlImage: '',
-      postText: '',
+      postText: '123',
       filterClass: '',
       step: 0,
+      filter: filter,
+
+      selectFilter: '',
     };
   },
 
   mutations: {
+    filterPicker(state, data) {
+      state.selectFilter = data;
+    },
+    write(state, data) {
+      state.postText = data;
+    },
+
     setMore(state, data) {
       state.more = data;
       state.information.push(state.more);
@@ -60,12 +71,13 @@ const store = createStore({
         date: 'Apr 4',
         liked: false,
         content: state.postText,
-        filter: state.filterClass,
+        filter: state.selectFilter,
       };
       console.log(내게시물);
       state.information.unshift(내게시물);
       state.step = 0;
       state.filterClass = '';
+      state.selectFilter = '';
     },
 
     next(state) {
