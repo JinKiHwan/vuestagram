@@ -5,7 +5,9 @@
     </ul>
     <ul class="header-button-right">
       <li @click="$store.commit('next')" v-if="$store.state.step == 1">Next</li>
-      <li @click="$store.commit('publish')" v-if="$store.state.step == 2">발행</li>
+      <li @click="$store.commit('publish')" v-if="$store.state.step == 2">
+        발행
+      </li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -15,13 +17,21 @@
   <p>{{ $store.state.age }}</p>
   <button @click="나이증가(10)">버튼</button>
 
-  <Container :information="$store.state.information" @write="postText = $event" />
+  <Container
+    :information="$store.state.information"
+    @write="postText = $event" />
 
   <button @click="$store.dispatch('getData')">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" @change="upload" multiple accept="image/*" />
+      <input
+        type="file"
+        id="file"
+        class="inputfile"
+        @change="upload"
+        multiple
+        accept="image/*" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -144,3 +154,8 @@ ul {
   border-left: 1px solid #eee;
 }
 </style>
+
+<!-- PWA 사용하여 Web App 만들기 -->
+<!-- 1.vue add pwa-->
+<!-- service-worker.js / manifest.json -->
+<!-- 두개의 파일은 npm run build할 때 자동생성 -->
